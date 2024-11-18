@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: luosan-dianping
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/lsdp
+    username: root
+    password: 172229
+  data:
+    redis:
+      host: 192.168.122.255
+      port: 6379
+      password: 172229
+      lettuce:
+        pool:
+          max-active: 10
+          max-idle: 10
+          min-idle: 1
+          time-between-eviction-runs: 10s
+  jackson:
+    default-property-inclusion: non_null
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
