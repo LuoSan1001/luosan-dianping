@@ -22,4 +22,9 @@ public class UserController {
     public String login(@RequestBody LoginFormDTO loginFormDTO, HttpSession session) {
         return userService.login(loginFormDTO, session);
     }
+
+    @GetMapping("/nihao")
+    public String nihao() {
+        return "niaho";
+    }
 }
