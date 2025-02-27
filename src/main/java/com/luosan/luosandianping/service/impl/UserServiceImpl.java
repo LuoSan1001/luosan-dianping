@@ -3,25 +3,19 @@ package com.luosan.luosandianping.service.impl;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
 import cn.hutool.core.util.RandomUtil;
-import com.google.gson.Gson;
 import com.luosan.luosandianping.dto.LoginFormDTO;
 import com.luosan.luosandianping.dto.UserDTO;
 import com.luosan.luosandianping.entity.User;
 import com.luosan.luosandianping.mapper.UserMapper;
 import com.luosan.luosandianping.service.IUserService;
-import com.luosan.luosandianping.utils.JwtUtils;
 import com.luosan.luosandianping.utils.RegexUtils;
-import io.jsonwebtoken.Jwts;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpSession;
-import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -36,7 +30,7 @@ public class UserServiceImpl implements IUserService {
     private UserMapper userMapper;
 
     @Override
-    public String sendCode(String phone, HttpSession session) {
+    public String sendCode(String phone) {
         if (!RegexUtils.isPhone(phone)) {
             return "电话号码格式错误";
         }
@@ -47,7 +41,7 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
-    public String login(LoginFormDTO loginFormDTO, HttpSession session) {
+    public String login(LoginFormDTO loginFormDTO) {
         String phone = loginFormDTO.getPhone();
         String code = loginFormDTO.getCode();
 

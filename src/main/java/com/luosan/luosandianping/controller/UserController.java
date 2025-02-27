@@ -14,13 +14,13 @@ public class UserController {
     IUserService userService;
 
     @PostMapping("/code")
-    public String sendCode(@RequestParam String phone, HttpSession session) {
-        return userService.sendCode(phone, session);
+    public String sendCode(@RequestParam String phone) {
+        return userService.sendCode(phone);
     }
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginFormDTO loginFormDTO, HttpSession session) {
-        return userService.login(loginFormDTO, session);
+    public String login(@RequestBody LoginFormDTO loginFormDTO) {
+        return userService.login(loginFormDTO);
     }
 
     @GetMapping("/nihao")
